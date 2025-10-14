@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Email verification</title>
+  <link rel="stylesheet" href="/css/styles.css" />
+  <style>
+    .auth-card { max-width: 520px; margin: 4rem auto; padding: 1.5rem; border: 1px solid #ddd; border-radius: 8px; background:#fff; }
+    .auth-card h1 { margin-top: 0; font-size: 1.5rem; }
+    .ok { color:#135d13; }
+    .err { color:#b00020; }
+  </style>
+</head>
+<body>
+  <div class="auth-card">
+    <h1>Email verification</h1>
+    {% if success %}<p class="ok">{{ success }}</p>{% endif %}
+    {% if error %}<p class="err">{{ error }}</p>{% endif %}
+    {% if email %}<p>We sent a verification link to <strong>{{ email }}</strong>. Please check your inbox.</p>{% endif %}
+    {% if dev_link %}
+      <div class="ok" style="margin:.5rem 0 1rem; background:#fff8d8; border:1px solid #e6d79a; padding:.5rem .75rem; border-radius:6px; color:#333;">
+        <strong>Dev only:</strong> email not configured — verify via this link:<br>
+        <a href="{{ dev_link }}">{{ dev_link }}</a>
+      </div>
+    {% endif %}
+    <p><a href="/">Return to home</a></p>
+  </div>
+</body>
+</html>

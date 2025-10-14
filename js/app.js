@@ -362,6 +362,7 @@ async function loadChapter() {
 document.addEventListener("DOMContentLoaded", () => {
   if (document.getElementById("book-list")) renderBooksPage();
   loadChapter();
+  setupAccountMenu();
 });
 
 /* --- Single vs Parallel view toggle --- */
@@ -447,6 +448,52 @@ document.addEventListener("DOMContentLoaded", () => {
     document.addEventListener('DOMContentLoaded', setupToggle, { once: true });
   }
 })();
+
+/* ================= ACCOUNT MENU ======================================== */
+function setupAccountMenu(){
+  const btn  = document.getElementById('account-btn');
+  const menu = document.getElementById('account-menu');
+  if (!btn || !menu) return;
+
+  function closeMenu(){
+    if (!menu.hidden){
+      menu.hidden = true;
+      btn.setAttribute('aria-expanded', 'false');
+    }
+  }
+  function toggleMenu(e){
+    e?.stopPropagation();
+    const willOpen = menu.hidden;
+    // close any other open menu (if any page duplicates)
+    document.querySelectorAll('.account-menu').forEach(m => { if (m !== menu) m.hidden = true; });
+    menu.hidden = !willOpen ? true : false;
+    btn.setAttribute('aria-expanded', String(willOpen));
+  }
+  btn.addEventListener('click', toggleMenu);
+  document.addEventListener('click', (e) => {
+    if (!menu.hidden && !menu.contains(e.target) && e.target !== btn) closeMenu();
+  });
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeMenu(); });
+
+  // Populate menu based on auth state
+  fetch("/api/me", { credentials: "same-origin", cache: "no-store" })
+    .then(r => r.ok ? r.json() : { authenticated:false })
+    .then(me => {
+      if (me.authenticated) {
+        menu.innerHTML = `
+          <a role="menuitem" href="/login">Login</a>
+          <a role="menuitem" href="/signup">Sign up</a>
+          <a role="menuitem" href="/password/forgot">Forgot password</a>
+        `;
+      } else {
+        menu.innerHTML = `
+          <a role="menuitem" href="/login">Login</a>
+          <a role="menuitem" href="/signup">Sign up</a>
+        `;
+      }
+    })
+    .catch(() => {/* keep defaults */});
+}
 
 
 /* ================= THEME: persistence + toggle ========================== */

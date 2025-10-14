@@ -3,3 +3,6 @@ gunicorn
 requests
 beautifulsoup4==4.12.3
 urllib3==2.5.0
+flask-login
+flask-bcrypt
+flask-sqlalchemy

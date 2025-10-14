@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sign up</title>
+  <link rel="icon" href="/favicon.png" />
+  <link rel="stylesheet" href="/css/styles.css" />
+  <style>
+    .auth-card { max-width: 420px; margin: 4rem auto; padding: 1.5rem; border: 1px solid #ddd; border-radius: 8px; background:#fff; }
+    .auth-card h1 { margin-top: 0; font-size: 1.5rem; }
+    .auth-card form { display: grid; gap: .75rem; }
+    .auth-card label { display: grid; gap: .25rem; font-weight: 600; }
+    .auth-card input { padding: .6rem .7rem; border:1px solid #bbb; border-radius:6px; }
+    .auth-card button { padding:.6rem .9rem; border:0; border-radius:6px; background:#879375; color:#fff; cursor:pointer; }
+    .auth-card .muted { color:#666; font-size:.9rem; }
+    .error { color:#b00020; margin:.25rem 0 .5rem; }
+  </style>
+</head>
+<body>
+  <div class="auth-card">
+    <h1>Create your account</h1>
+    {% if error %}<div class="error">{{ error }}</div>{% endif %}
+    <form method="post" action="/signup">
+      <label>Email
+        <input type="email" name="email" autocomplete="username" required />
+      </label>
+      <label>Password
+        <input type="password" name="password" autocomplete="new-password" minlength="8" required />
+      </label>
+      <button type="submit">Create account</button>
+    </form>
+    <p class="muted">Already have an account? <a href="/login">Log in</a></p>
+  </div>
+</body>
+</html>
