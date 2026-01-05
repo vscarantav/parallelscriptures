@@ -341,14 +341,24 @@ async function loadChapter() {
     const row = document.createElement("div");
     row.className = "verse-row";
 
+    // Helper to format: "1 And it came to pass..."
+    const formatVerse = (vObj) => {
+      if (!vObj) return "";
+      // Handle new object format { verse: "1", text: "..." }
+      if (typeof vObj === 'object' && vObj.text) {
+        return `<span class="v-num"><b>${vObj.verse}</b></span> ${vObj.text}`;
+      }
+      // Fallback for string-only data (if any)
+      return vObj;
+    };
+
     const col1 = document.createElement("div");
     col1.className = "verse-col";
-    col1.textContent = mainVerses[i] || "";
+    col1.innerHTML = formatVerse(mainVerses[i]);
 
     const col2 = document.createElement("div");
     col2.className = "verse-col";
-    col2.textContent = secondVerses[i] || "";
-
+    col2.innerHTML = formatVerse(secondVerses[i]);
     row.appendChild(col1);
     row.appendChild(col2);
 
