@@ -90,26 +90,6 @@ h1:not(#chapter-title) { text-align: center; margin: 12px 0 16px; }
 
 }
 
-
-/* Navigation buttons base */
-.prev-button, .next-button {
-  position: fixed;
-  top: 50%;
-  transform: translateY(-50%);
-  background: white;
-  border-radius: 50%;
-  width: 50px;
-  height: 50px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.3);
-  z-index: 1000;
-  transition: all 0.4s ease;
-}
-
-
-
 /* Parent wrappers for each side */
 .side-nav {
   position: fixed;
@@ -118,6 +98,7 @@ h1:not(#chapter-title) { text-align: center; margin: 12px 0 16px; }
   height: 50%;        /* hover target spans middle half of screen */
   width: 120px;       /* wide enough to include the revealed button */
   z-index: 999;
+  pointer-events: none; /* Let clicks pass through the empty space to the text */
 }
 .side-nav.left  { left: 0; }
 .side-nav.right { right: 0; }
@@ -127,10 +108,13 @@ h1:not(#chapter-title) { text-align: center; margin: 12px 0 16px; }
   position: absolute;
   top: 25%;
   height: 50%;        /* center vertically */
-  width: 72px;        /* comfy hover width */
-  left: 0;            /* for right side we’ll still place the button on the other end */
-  right: auto;
+  width: 30px;        /* narrower width so it doesn't cover text */
+  pointer-events: auto; /* Re-enable clicking just for this thin strip */
 }
+
+/* Fix: Ensure the hot zone hugs the correct screen edge */
+.side-nav.left .edge-zone  { left: 0; right: auto; }
+.side-nav.right .edge-zone { left: auto; right: 0; }
 
 /* Buttons: off-screen & transparent by default */
 .prev-button, .next-button {
@@ -145,7 +129,7 @@ h1:not(#chapter-title) { text-align: center; margin: 12px 0 16px; }
   box-shadow: 0 2px 6px rgba(0,0,0,0.3);
   z-index: 1000;
   opacity: 0;                            /* hidden */
-  pointer-events: none;                  /* not clickable while hidden */
+  pointer-events: auto;                  
   transition: transform .35s ease, opacity .2s ease;
   will-change: transform, opacity;
   backface-visibility: hidden;
@@ -156,8 +140,8 @@ h1:not(#chapter-title) { text-align: center; margin: 12px 0 16px; }
 .side-nav.right .next-button { right: 10px; }
 
 /* Start fully off-screen using X translation (smooth, no reflow) */
-.side-nav.left  .prev-button { transform: translateY(-50%) translateX(-140%); }
-.side-nav.right .next-button { transform: translateY(-50%) translateX(140%);  }
+.side-nav.left  .prev-button { transform: translateY(-50%) translateX(-40%); }
+.side-nav.right .next-button { transform: translateY(-50%) translateX(40%);  }
 
 /* Reveal when hovering anywhere on the side (edge OR button) */
 .side-nav:hover .prev-button,
@@ -654,3 +638,35 @@ body { background: var(--bg); color: var(--fg); }
   display:block; padding:8px 10px; border-radius:8px; color:inherit; text-decoration:none;
 }
 .account-menu a:hover{ background: var(--muted); }
+
+/* ================= TRANSLATE POPUP ===================================== */
+#translate-popup {
+  position: absolute;
+  display: none;
+  z-index: 2000;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-family: sans-serif;
+  font-size: 14px;
+  font-weight: 400; /* Normal weight for reading text */
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  max-width: 300px;  /* Prevent it from getting too wide */
+  line-height: 1.4;
+  
+  /* Theming support */
+  background-color: var(--surface);
+  color: var(--fg);
+  border: 1px solid var(--border);
+  transition: opacity 0.2s, background-color 0.2s;
+}
+
+#translate-popup:hover {
+  /* Removed the hover effect because now it contains text to read, not just a button */
+  background-color: var(--surface); 
+  border-color: var(--btn-active-bg);
+}
+
+/* Style for the translated text result */
+#translate-popup .t-result { margin-bottom: 6px; display: block; }
+#translate-popup .t-link { font-size: 0.85em; color: var(--banner); text-decoration: underline; }

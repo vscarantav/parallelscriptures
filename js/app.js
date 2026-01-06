@@ -597,3 +597,108 @@ function setupAccountMenu(){
   }, { once: true });
 })();
 
+/* ================= TRANSLATE POPUP ===================================== */
+(function () {
+  // 1. Create the popup element (hidden by default)
+  const popup = document.createElement("div");
+  popup.id = "translate-popup";
+  // We will set content dynamically
+  document.body.appendChild(popup);
+
+  // 2. Logic to show/hide popup
+  function handleSelection(e) {
+    // FIX 1: If clicking inside the popup, do nothing (don't reset the view)
+    if (popup.contains(e.target)) return;
+    const selection = window.getSelection();
+    const text = selection.toString().trim();
+
+    // Hide if no text selected
+    if (!text) {
+      popup.style.display = "none";
+      return;
+    }
+
+    // Optional: Only allow inside verse container to avoid nuisance
+    const container = document.getElementById("verse-container");
+    if (container && !container.contains(selection.anchorNode)) {
+        popup.style.display = "none";
+        return;
+    }
+
+    // Reset popup to initial "Translate" button state
+    popup.innerHTML = `<strong>Translate</strong>`;
+    popup.style.cursor = "pointer";
+    popup.dataset.loading = "false"; // Reset loading state
+
+    // Position the popup near the mouse cursor
+    // We add a small offset so it doesn't block the text
+    const x = e.pageX + 5;
+    const y = e.pageY + 10;
+
+    popup.style.left = `${x}px`;
+    popup.style.top = `${y}px`;
+    popup.style.display = "block";
+
+    // 3. Handle Click
+    popup.onclick = async (evt) => {
+        evt.stopPropagation(); // prevent immediate deselect
+        
+        // Prevent double clicks
+        if (popup.dataset.loading === "true") return;
+        
+        // Show loading state
+        popup.dataset.loading = "true";
+        popup.innerHTML = `<em>Translating...</em>`;
+        popup.style.cursor = "default";
+
+        // Settings
+        const targetLang = "en"; // Translate everything to English (or change to "pt")
+        const sourcePair = `Autodetect|${targetLang}`;
+        
+        try {
+          // Use MyMemory API (Free for anonymous usage)
+          const response = await fetch(`https://api.mymemory.translated.net/get?q=${encodeURIComponent(text)}&langpair=${sourcePair}`);
+          const data = await response.json();
+          
+          if (data && data.responseData) {
+            const translatedText = data.responseData.translatedText;
+            const googleUrl = `https://translate.google.com/?sl=auto&tl=${targetLang}&text=${encodeURIComponent(text)}&op=translate`;
+
+            // Update popup with result + fallback link
+            popup.innerHTML = `
+              <span class="t-result">${translatedText}</span>
+              <a href="${googleUrl}" target="_blank" class="t-link">Open in Google</a>
+            `;
+          } else {
+            throw new Error("No translation found");
+          }
+        } catch (err) {
+          popup.textContent = "Error loading translation.";
+          console.error(err);
+        } finally {
+           // Remove click listener so they can copy text without re-triggering
+           popup.onclick = (e) => e.stopPropagation();
+        }
+    };
+  }
+
+  // 4. Attach Listeners
+  // 'mouseup' fires when user finishes selecting text with mouse
+  document.addEventListener("mouseup", handleSelection);
+  
+  // 'keyup' ensures we capture Shift+Arrow selection too
+  document.addEventListener("keyup", (e) => {
+      if (e.key.includes("Arrow") || e.key === "Shift") {
+          handleSelection(e);
+      }
+  });
+
+  // Hide popup if clicking elsewhere
+  document.addEventListener("mousedown", (e) => {
+    // FIX 2: Check if click is anywhere inside the popup, not just the exact div
+    if (!popup.contains(e.target)) {
+      popup.style.display = "none";
+    }
+  });
+})();
+
