@@ -1,13 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- Favicons -->
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
   <link rel="icon" type="image/png" sizes="192x192" href="/favicon.png">
   <link rel="apple-touch-icon" sizes="180x180" href="/favicon.png">
   <link rel="shortcut icon" href="/favicon.png">
   <meta name="theme-color" content="#879375">
-  <!-- keep your existing font; add Merriweather so #chapter-title matches chapter.html -->
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
@@ -16,79 +14,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Select Languages</title>
   <link rel="stylesheet" href="css/styles.css">
+  
+  <script src="js/app.js" defer></script>
 </head>
 
-<!-- unchanged: loads languages into #main-select and #second-select -->
-<script>
-document.addEventListener('DOMContentLoaded', async () => {
-  const mainSel   = document.getElementById('main-select');
-  const secondSel = document.getElementById('second-select');
-
-  if (!mainSel || !secondSel) {
-    console.error('Select elements not found. Expected #main-select and #second-select.');
-    return;
-  }
-
-  try {
-    const resp = await fetch('/languages.json', { cache: 'no-store' });
-    if (!resp.ok) throw new Error(`HTTP ${resp.status} ${resp.statusText}`);
-    const langs = await resp.json();
-    if (!Array.isArray(langs)) throw new Error('languages.json is not an array');
-
-    langs.sort((a, b) => {
-      const nameA = (a.name || a['language name'] || '').toString();
-      const nameB = (b.name || b['language name'] || '').toString();
-      return nameA.localeCompare(nameB);
-    });
-
-    function makeOption(entry) {
-      const code = entry.code;
-      const label = entry.name ?? entry['language name'];
-      if (!code || !label) return null;
-      const opt = document.createElement('option');
-      opt.value = code;
-      opt.textContent = label;
-      return opt;
-    }
-
-    mainSel.innerHTML = '';
-    const placeholder = document.createElement('option');
-    placeholder.value = '';
-    placeholder.textContent = '--select language--';
-    placeholder.disabled = true;
-    placeholder.selected = true;
-    mainSel.appendChild(placeholder);
-    mainSel.required = true;
-
-    secondSel.innerHTML = '';
-
-    let added = 0;
-    for (const entry of langs) {
-      const o1 = makeOption(entry);
-      const o2 = makeOption(entry);
-      if (o1) mainSel.appendChild(o1);
-      if (o2) secondSel.appendChild(o2);
-      if (o1 && o2) added++;
-    }
-
-    const hasEng = Array.from(secondSel.options).some(o => o.value === 'eng');
-    if (hasEng) secondSel.value = 'eng';
-
-  } catch (err) {
-    console.error('Failed to load languages.json:', err);
-    mainSel.innerHTML = '<option>Unable to load languages</option>';
-    secondSel.innerHTML = '<option>Unable to load languages</option>';
-  }
-});
-</script>
-
-<script src="js/app.js"></script>
-
 <body>
-  <div class="page"><!-- align with chapter.html layout -->
+  <div class="page">
     <header class="topbar">
       <h1 id="chapter-title">Select Languages</h1>
-      <!-- account icon + popup menu -->
       <button id="account-btn" class="account-btn" aria-label="Account" aria-haspopup="menu" aria-expanded="false">
         <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
           <path d="M20 21a8 8 0 0 0-16 0"/><circle cx="12" cy="7" r="4"/>
@@ -100,7 +33,6 @@ document.addEventListener('DOMContentLoaded', async () => {
       </div>
     </header>
 
-    <!-- kept action/GET + IDs exactly the same -->
     <form action="books.html" method="GET" class="lang-form">
       <div class="lang-row">
         <label>Language You Are Learning:
@@ -115,5 +47,89 @@ document.addEventListener('DOMContentLoaded', async () => {
       <button type="submit">Continue</button>
     </form>
   </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', async () => {
+      const mainSel = document.getElementById('main-select');
+      const secondSel = document.getElementById('second-select');
+
+      if (!mainSel || !secondSel) return;
+
+      let langs = []; // Define outside try/catch so the form listener can see it
+
+      try {
+        const resp = await fetch('/languages.json', { cache: 'no-store' });
+        if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
+        langs = await resp.json(); // Assign to variable
+        
+        if (!Array.isArray(langs)) throw new Error('languages.json is not an array');
+
+        langs.sort((a, b) => {
+          const nameA = (a.name || a['language name'] || '').toString();
+          const nameB = (b.name || b['language name'] || '').toString();
+          return nameA.localeCompare(nameB);
+        });
+
+        function makeOption(entry) {
+          const code = entry.code;
+          const label = entry.name ?? entry['language name'];
+          if (!code || !label) return null;
+          const opt = document.createElement('option');
+          opt.value = code;
+          opt.textContent = label;
+          return opt;
+        }
+
+        mainSel.innerHTML = '';
+        const placeholder = document.createElement('option');
+        placeholder.value = '';
+        placeholder.textContent = '--select language--';
+        placeholder.disabled = true;
+        placeholder.selected = true;
+        mainSel.appendChild(placeholder);
+        mainSel.required = true;
+
+        secondSel.innerHTML = '';
+
+        let added = 0;
+        for (const entry of langs) {
+          const o1 = makeOption(entry);
+          const o2 = makeOption(entry);
+          if (o1) mainSel.appendChild(o1);
+          if (o2) secondSel.appendChild(o2);
+          if (o1 && o2) added++;
+        }
+
+        const hasEng = Array.from(secondSel.options).some(o => o.value === 'eng');
+        if (hasEng) secondSel.value = 'eng';
+
+      } catch (err) {
+        console.error('Failed to load languages.json:', err);
+        mainSel.innerHTML = '<option>Unable to load languages</option>';
+        secondSel.innerHTML = '<option>Unable to load languages</option>';
+      }
+
+      // --- NEW: Consolidated Form Listener ---
+      // We put this HERE so it is guaranteed to run after the form exists
+      const form = document.querySelector('.lang-form');
+      if (form) {
+        form.addEventListener('submit', () => {
+          const mainVal = mainSel.value;
+          const nativeCode = secondSel.value;
+
+          // 1. Save standard IDs
+          localStorage.setItem('learningLang', mainVal);
+          localStorage.setItem('nativeLang', nativeCode);
+
+          // 2. Save Google Code
+          // We can access 'langs' here because it is in the parent scope
+          const selectedObj = langs.find(l => l.code === nativeCode);
+          const googleCode = (selectedObj && selectedObj.google) ? selectedObj.google : nativeCode;
+          
+          localStorage.setItem('userGoogleLang', googleCode);
+        });
+      }
+    });
+  </script>
 </body>
 </html>

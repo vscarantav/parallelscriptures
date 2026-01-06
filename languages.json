@@ -1,483 +1,123 @@
 [
-    {
-    "code": "afr",
-    "language name": "Afrikaans"
-  },
-  {
-    "code": "aym",
-    "language name": "Aymar Aru"
-  },
-  {
-    "code": "ind",
-    "language name": "Bahasa Indonesia"
-  },
-  {
-    "code": "msa",
-    "language name": "Bahasa Melayu"
-  },
-  {
-    "code": "tzo",
-    "language name": "Bats'i k'op"
-  },
-  {
-    "code": "bik",
-    "language name": "Bikol"
-  },
-  {
-    "code": "bis",
-    "language name": "Bislama"
-  },
-  {
-    "code": "cak",
-    "language name": "Cakchiquel"
-  },
-  {
-    "code": "cat",
-    "language name": "Català"
-  },
-  {
-    "code": "ceb",
-    "language name": "Cebuano"
-  },
-  {
-    "code": "ces",
-    "language name": "Česky"
-  },
-  {
-    "code": "cha",
-    "language name": "Chamoru"
-  },
-  {
-    "code": "nya",
-    "language name": "Chichewa"
-  },
-  {
-    "code": "cym",
-    "language name": "Cymraeg"
-  },
-  {
-    "code": "dan",
-    "language name": "Dansk"
-  },
-  {
-    "code": "deu",
-    "language name": "Deutsch"
-  },
-  {
-    "code": "nav",
-    "language name": "Diné bizaad"
-  },
-  {
-    "code": "cuk",
-    "language name": "Dulegaya"
-  },
-  {
-    "code": "yor",
-    "language name": "Èdè Yorùbá"
-  },
-  {
-    "code": "est",
-    "language name": "Eesti"
-  },
-  {
-    "code": "efi",
-    "language name": "Efik"
-  },
-  {
-    "code": "guz",
-    "language name": "EkeGusii"
-  },
-  {
-    "code": "eng",
-    "language name": "English"
-  },
-  {
-    "code": "spa",
-    "language name": "Español"
-  },
-  {
-    "code": "ton",
-    "language name": "Faka-Tonga"
-  },
-  {
-    "code": "fat",
-    "language name": "Fante"
-  },
-  {
-    "code": "chk",
-    "language name": "Fosun Chuuk"
-  },
-  {
-    "code": "fra",
-    "language name": "Français"
-  },
-  {
-    "code": "smo",
-    "language name": "Gagana Samoa"
-  },
-  {
-    "code": "grn",
-    "language name": "Guaraní (Avañe'ẽ)"
-  },
-  {
-    "code": "hil",
-    "language name": "Hiligaynon"
-  },
-  {
-    "code": "hmn",
-    "language name": "Hmoob"
-  },
-  {
-    "code": "hrv",
-    "language name": "Hrvatski"
-  },
-  {
-    "code": "haw",
-    "language name": "ʻŌlelo Hawaiʻi"
-  },
-  {
-    "code": "ibo",
-    "language name": "Igbo"
-  },
-  {
-    "code": "ilo",
-    "language name": "Ilokano"
-  },
-  {
-    "code": "xho",
-    "language name": "isiXhosa"
-  },
-  {
-    "code": "zul",
-    "language name": "isiZulu"
-  },
-  {
-    "code": "isl",
-    "language name": "íslenska"
-  },
-  {
-    "code": "ita",
-    "language name": "Italiano"
-  },
-  {
-    "code": "kos",
-    "language name": "Kahs Kosrae"
-  },
-  {
-    "code": "mah",
-    "language name": "Kajin Majōl"
-  },
-  {
-    "code": "qvi",
-    "language name": "Kichwa"
-  },
-  {
-    "code": "kin",
-    "language name": "Kinyarwanda"
-  },
-  {
-    "code": "gil",
-    "language name": "Kiribati"
-  },
-  {
-    "code": "swa",
-    "language name": "Kiswahili"
-  },
-  {
-    "code": "niu",
-    "language name": "ko e vagahau Niuē"
-  },
-  {
-    "code": "hat",
-    "language name": "Kreyòl Ayisyen"
-  },
-  {
-    "code": "lav",
-    "language name": "Latviešu"
-  },
-  {
-    "code": "lit",
-    "language name": "Lietuvių"
-  },
-  {
-    "code": "lin",
-    "language name": "Lingála"
-  },
-  {
-    "code": "yua",
-    "language name": "maayaʼ tʼàan"
-  },
-  {
-    "code": "hun",
-    "language name": "Magyar"
-  },
-  {
-    "code": "pon",
-    "language name": "Mahsen en Pohnpei"
-  },
-  {
-    "code": "mlg",
-    "language name": "Malagasy"
-  },
-  {
-    "code": "mlt",
-    "language name": "Malti"
-  },
-  {
-    "code": "mam",
-    "language name": "Mam"
-  },
-  {
-    "code": "rar",
-    "language name": "Māori Kuki Airani"
-  },
-  {
-    "code": "nld",
-    "language name": "Nederlands"
-  },
-  {
-    "code": "nor",
-    "language name": "Norsk"
-  },
-  {
-    "code": "pau",
-    "language name": "Palauan"
-  },
-  {
-    "code": "pam",
-    "language name": "Pampango"
-  },
-  {
-    "code": "pag",
-    "language name": "Pangasinan"
-  },
-  {
-    "code": "pap",
-    "language name": "Papiamento"
-  },
-  {
-    "code": "pol",
-    "language name": "Polski"
-  },
-  {
-    "code": "por",
-    "language name": "Português (Brasil)"
-  },
-  {
-    "code": "kek",
-    "language name": "Q’eqchi’"
-  },
-  {
-    "code": "quh",
-    "language name": "Quechua-Bolivia"
-  },
-  {
-    "code": "quc",
-    "language name": "Quiché"
-  },
-  {
-    "code": "tah",
-    "language name": "Reo Tahiti"
-  },
-  {
-    "code": "ron",
-    "language name": "Română"
-  },
-  {
-    "code": "sot",
-    "language name": "Sesotho"
-  },
-  {
-    "code": "tsn",
-    "language name": "Setswana"
-  },
-  {
-    "code": "sna",
-    "language name": "Shona"
-  },
-  {
-    "code": "alb",
-    "language name": "Shqip"
-  },
-  {
-    "code": "ssw",
-    "language name": "siSwati"
-  },
-  {
-    "code": "slk",
-    "language name": "Slovenčina"
-  },
-  {
-    "code": "slv",
-    "language name": "Slovenščina"
-  },
-  {
-    "code": "fin",
-    "language name": "Suomi"
-  },
-  {
-    "code": "swe",
-    "language name": "Svenska"
-  },
-  {
-    "code": "tgl",
-    "language name": "Tagalog"
-  },
-  {
-    "code": "mri",
-    "language name": "Te Reo Māori"
-  },
-  {
-    "code": "yap",
-    "language name": "Thin Nu Wa'ab"
-  },
-  {
-    "code": "vie",
-    "language name": "Tiếng Việt"
-  },
-  {
-    "code": "tpi",
-    "language name": "Tok Pisin"
-  },
-  {
-    "code": "lua",
-    "language name": "Tshiluba"
-  },
-  {
-    "code": "tur",
-    "language name": "Türkçe"
-  },
-  {
-    "code": "twi",
-    "language name": "Twi"
-  },
-  {
-    "code": "fij",
-    "language name": "Vosa vakaviti"
-  },
-  {
-    "code": "war",
-    "language name": "Waray Waray"
-  },
-  {
-    "code": "quz",
-    "language name": "Yunkay Quechua"
-  },
-  {
-    "code": "ell",
-    "language name": "Ελληνικά"
-  },
-  {
-    "code": "bul",
-    "language name": "Български"
-  },
-  {
-    "code": "kaz",
-    "language name": "Қазақ"
-  },
-  {
-    "code": "mkd",
-    "language name": "Македонски"
-  },
-  {
-    "code": "mon",
-    "language name": "Монгол"
-  },
-  {
-    "code": "rus",
-    "language name": "Русский"
-  },
-  {    "code": "srp",    "language name": "Српски"  },
-  {
-    "code": "ukr",
-    "language name": "Українська"
-  },
-  {
-    "code": "kat",
-    "language name": "ქართული"
-  },
-  {
-    "code": "hye",
-    "language name": "Հայերեն"
-  },
-  {
-    "code": "urd",
-    "language name": "اردو"
-  },
-  {
-    "code": "ara",
-    "language name": "العربية"
-  },
-  {
-    "code": "pes",
-    "language name": "فارسی"
-  },
-  {
-    "code": "amh",
-    "language name": "አማርኛ"
-  },
-  {
-    "code": "nep",
-    "language name": "नेपाली"
-  },
-  {
-    "code": "hin",
-    "language name": "हिन्दी"
-  },
-  {
-    "code": "ben",
-    "language name": "বাংলা"
-  },
-  {
-    "code": "tam",
-    "language name": "தமிழ்"
-  },
-  {
-    "code": "tel",
-    "language name": "తెలుగు"
-  },
-  {
-    "code": "sin",
-    "language name": "සිංහල"
-  },
-  {
-    "code": "tha",
-    "language name": "ภาษาไทย"
-  },
-  {
-    "code": "lao",
-    "language name": "ພາສາລາວ"
-  },
-  {
-    "code": "mya",
-    "language name": "ဗမာစာ"
-  },
-  {
-    "code": "khm",
-    "language name": "ខ្មែរ‎"
-  },
-  {
-    "code": "kor",
-    "language name": "한국어"
-  },
-  {
-    "code": "jpn",
-    "language name": "日本語"
-  },
-  {
-    "code": "cmn-Latn",
-    "language name": "漢語拼音"
-  },
-  {
-    "code": "zhs",
-    "language name": "简体中文 - 普通话"
-  },
-  {
-    "code": "zho",
-    "language name": "繁體中文 - 國語"
-  },
-  {
-    "code": "yue",
-    "language name": "繁體中文 - 廣東話"
-  }
+  { "code": "afr", "language name": "Afrikaans", "google": "af" },
+  { "code": "aym", "language name": "Aymar Aru", "google": "ay" },
+  { "code": "ind", "language name": "Bahasa Indonesia", "google": "id" },
+  { "code": "msa", "language name": "Bahasa Melayu", "google": "ms" },
+  { "code": "tzo", "language name": "Bats'i k'op", "google": "es" },
+  { "code": "bik", "language name": "Bikol", "google": "tl" },
+  { "code": "bis", "language name": "Bislama", "google": "en" },
+  { "code": "cak", "language name": "Cakchiquel", "google": "es" },
+  { "code": "cat", "language name": "Català", "google": "ca" },
+  { "code": "ceb", "language name": "Cebuano", "google": "ceb" },
+  { "code": "ces", "language name": "Česky", "google": "cs" },
+  { "code": "cha", "language name": "Chamoru", "google": "ch" },
+  { "code": "nya", "language name": "Chichewa", "google": "ny" },
+  { "code": "cym", "language name": "Cymraeg", "google": "cy" },
+  { "code": "dan", "language name": "Dansk", "google": "da" },
+  { "code": "deu", "language name": "Deutsch", "google": "de" },
+  { "code": "nav", "language name": "Diné bizaad", "google": "nv" },
+  { "code": "cuk", "language name": "Dulegaya", "google": "es" },
+  { "code": "yor", "language name": "Èdè Yorùbá", "google": "yo" },
+  { "code": "est", "language name": "Eesti", "google": "et" },
+  { "code": "efi", "language name": "Efik", "google": "en" },
+  { "code": "guz", "language name": "EkeGusii", "google": "sw" },
+  { "code": "eng", "language name": "English", "google": "en" },
+  { "code": "spa", "language name": "Español", "google": "es" },
+  { "code": "ton", "language name": "Faka-Tonga", "google": "to" },
+  { "code": "fat", "language name": "Fante", "google": "ak" },
+  { "code": "chk", "language name": "Fosun Chuuk", "google": "en" },
+  { "code": "fra", "language name": "Français", "google": "fr" },
+  { "code": "smo", "language name": "Gagana Samoa", "google": "sm" },
+  { "code": "grn", "language name": "Guaraní (Avañe'ẽ)", "google": "gn" },
+  { "code": "hil", "language name": "Hiligaynon", "google": "tl" },
+  { "code": "hmn", "language name": "Hmoob", "google": "hmn" },
+  { "code": "hrv", "language name": "Hrvatski", "google": "hr" },
+  { "code": "haw", "language name": "ʻŌlelo Hawaiʻi", "google": "haw" },
+  { "code": "ibo", "language name": "Igbo", "google": "ig" },
+  { "code": "ilo", "language name": "Ilokano", "google": "ilo" },
+  { "code": "xho", "language name": "isiXhosa", "google": "xh" },
+  { "code": "zul", "language name": "isiZulu", "google": "zu" },
+  { "code": "isl", "language name": "íslenska", "google": "is" },
+  { "code": "ita", "language name": "Italiano", "google": "it" },
+  { "code": "kos", "language name": "Kahs Kosrae", "google": "en" },
+  { "code": "mah", "language name": "Kajin Majōl", "google": "en" },
+  { "code": "qvi", "language name": "Kichwa", "google": "qu" },
+  { "code": "kin", "language name": "Kinyarwanda", "google": "rw" },
+  { "code": "gil", "language name": "Kiribati", "google": "en" },
+  { "code": "swa", "language name": "Kiswahili", "google": "sw" },
+  { "code": "niu", "language name": "ko e vagahau Niuē", "google": "en" },
+  { "code": "hat", "language name": "Kreyòl Ayisyen", "google": "ht" },
+  { "code": "lav", "language name": "Latviešu", "google": "lv" },
+  { "code": "lit", "language name": "Lietuvių", "google": "lt" },
+  { "code": "lin", "language name": "Lingála", "google": "ln" },
+  { "code": "yua", "language name": "maayaʼ tʼàan", "google": "es" },
+  { "code": "hun", "language name": "Magyar", "google": "hu" },
+  { "code": "pon", "language name": "Mahsen en Pohnpei", "google": "en" },
+  { "code": "mlg", "language name": "Malagasy", "google": "mg" },
+  { "code": "mlt", "language name": "Malti", "google": "mt" },
+  { "code": "mam", "language name": "Mam", "google": "es" },
+  { "code": "rar", "language name": "Māori Kuki Airani", "google": "mi" },
+  { "code": "nld", "language name": "Nederlands", "google": "nl" },
+  { "code": "nor", "language name": "Norsk", "google": "no" },
+  { "code": "pau", "language name": "Palauan", "google": "en" },
+  { "code": "pam", "language name": "Pampango", "google": "tl" },
+  { "code": "pag", "language name": "Pangasinan", "google": "tl" },
+  { "code": "pap", "language name": "Papiamento", "google": "nl" },
+  { "code": "pol", "language name": "Polski", "google": "pl" },
+  { "code": "por", "language name": "Português (Brasil)", "google": "pt" },
+  { "code": "kek", "language name": "Q’eqchi’", "google": "es" },
+  { "code": "quh", "language name": "Quechua-Bolivia", "google": "qu" },
+  { "code": "quc", "language name": "Quiché", "google": "es" },
+  { "code": "tah", "language name": "Reo Tahiti", "google": "fr" },
+  { "code": "ron", "language name": "Română", "google": "ro" },
+  { "code": "sot", "language name": "Sesotho", "google": "st" },
+  { "code": "tsn", "language name": "Setswana", "google": "tn" },
+  { "code": "sna", "language name": "Shona", "google": "sn" },
+  { "code": "alb", "language name": "Shqip", "google": "sq" },
+  { "code": "ssw", "language name": "siSwati", "google": "ss" },
+  { "code": "slk", "language name": "Slovenčina", "google": "sk" },
+  { "code": "slv", "language name": "Slovenščina", "google": "sl" },
+  { "code": "fin", "language name": "Suomi", "google": "fi" },
+  { "code": "swe", "language name": "Svenska", "google": "sv" },
+  { "code": "tgl", "language name": "Tagalog", "google": "tl" },
+  { "code": "mri", "language name": "Te Reo Māori", "google": "mi" },
+  { "code": "yap", "language name": "Thin Nu Wa'ab", "google": "en" },
+  { "code": "vie", "language name": "Tiếng Việt", "google": "vi" },
+  { "code": "tpi", "language name": "Tok Pisin", "google": "en" },
+  { "code": "lua", "language name": "Tshiluba", "google": "fr" },
+  { "code": "tur", "language name": "Türkçe", "google": "tr" },
+  { "code": "twi", "language name": "Twi", "google": "ak" },
+  { "code": "fij", "language name": "Vosa vakaviti", "google": "fj" },
+  { "code": "war", "language name": "Waray Waray", "google": "tl" },
+  { "code": "quz", "language name": "Yunkay Quechua", "google": "qu" },
+  { "code": "ell", "language name": "Ελληνικά", "google": "el" },
+  { "code": "bul", "language name": "Български", "google": "bg" },
+  { "code": "kaz", "language name": "Қазақ", "google": "kk" },
+  { "code": "mkd", "language name": "Македонски", "google": "mk" },
+  { "code": "mon", "language name": "Монгол", "google": "mn" },
+  { "code": "rus", "language name": "Русский", "google": "ru" },
+  { "code": "srp", "language name": "Српски", "google": "sr" },
+  { "code": "ukr", "language name": "Українська", "google": "uk" },
+  { "code": "kat", "language name": "ქართული", "google": "ka" },
+  { "code": "hye", "language name": "Հայերեն", "google": "hy" },
+  { "code": "urd", "language name": "اردو", "google": "ur" },
+  { "code": "ara", "language name": "العربية", "google": "ar" },
+  { "code": "pes", "language name": "فارسی", "google": "fa" },
+  { "code": "amh", "language name": "አማርኛ", "google": "am" },
+  { "code": "nep", "language name": "नेपाली", "google": "ne" },
+  { "code": "hin", "language name": "हिन्दी", "google": "hi" },
+  { "code": "ben", "language name": "বাংলা", "google": "bn" },
+  { "code": "tam", "language name": "தமிழ்", "google": "ta" },
+  { "code": "tel", "language name": "తెలుగు", "google": "te" },
+  { "code": "sin", "language name": "සිංහල", "google": "si" },
+  { "code": "tha", "language name": "ภาษาไทย", "google": "th" },
+  { "code": "lao", "language name": "ພາສາລາວ", "google": "lo" },
+  { "code": "mya", "language name": "ဗမာစာ", "google": "my" },
+  { "code": "khm", "language name": "ខ្មែរ", "google": "km" },
+  { "code": "kor", "language name": "한국어", "google": "ko" },
+  { "code": "jpn", "language name": "日本語", "google": "ja" },
+  { "code": "cmn-Latn", "language name": "漢語拼音", "google": "zh-CN" },
+  { "code": "zhs", "language name": "简体中文 - 普通话", "google": "zh-CN" },
+  { "code": "zho", "language name": "繁體中文 - 國語", "google": "zh-TW" },
+  { "code": "yue", "language name": "繁體中文 - 廣東話", "google": "zh-TW" }
 ]
