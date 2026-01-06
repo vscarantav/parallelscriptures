@@ -651,23 +651,39 @@ document.addEventListener("DOMContentLoaded", () => {
         // Retrieve the Google-friendly code saved in index.html
         const targetLang = localStorage.getItem('userGoogleLang') || 'en';
         
-        const sourcePair = `Autodetect|${targetLang}`;
-        
-        try {
-          const response = await fetch(`https://api.mymemory.translated.net/get?q=${encodeURIComponent(text)}&langpair=${sourcePair}`);
-          const data = await response.json();
-          
-          if (data && data.responseData) {
-            const translatedText = data.responseData.translatedText;
-            const googleUrl = `https://translate.google.com/?sl=auto&tl=${targetLang}&text=${encodeURIComponent(text)}&op=translate`;
+        // --- SMART TRUNCATION ---
+     // MyMemory API fails if text > 500 chars. We truncate PREVIEW to 450.
+     const isLongText = text.length > 450;
+     const textForApi = isLongText ? text.substring(0, 450) : text;
+     
+     const sourcePair = `Autodetect|${targetLang}`;
+     
+     try {
+       // Use 'textForApi' (truncated) for the preview fetch
+       const response = await fetch(`https://api.mymemory.translated.net/get?q=${encodeURIComponent(textForApi)}&langpair=${sourcePair}`);
+       const data = await response.json();
+       
+       if (data && data.responseData) {
+         let translatedText = data.responseData.translatedText;
 
-            popup.innerHTML = `
-              <span class="t-result">${translatedText}</span>
-              <a href="${googleUrl}" target="_blank" class="t-link">Open in Google</a>
-            `;
-          } else {
-            throw new Error("No translation found");
-          }
+         // 1. Define the default link text
+        let linkLabel = "Open in Google";
+         
+         // Append dots if truncated
+         if (isLongText) {
+            translatedText += "...";
+            linkLabel = "Open in Google to see full translation";
+         }
+         // Use FULL 'text' for Google link so the user gets the whole thing
+         const googleUrl = `https://translate.google.com/?sl=auto&tl=${targetLang}&text=${encodeURIComponent(text)}&op=translate`;
+
+         popup.innerHTML = `
+           <span class="t-result">${translatedText}</span>
+           <a href="${googleUrl}" target="_blank" class="t-link">${linkLabel}</a>
+         `;
+       } else {
+         throw new Error("No translation found");
+       }
         } catch (err) {
           popup.textContent = "Error loading translation.";
           console.error(err);
